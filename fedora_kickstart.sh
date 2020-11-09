@@ -1,4 +1,4 @@
-# Fedora Kickstart
+# Fedora Kickstart - Minimal
 
 if [ -z "$SUDO_USER" ]; then
     echo "Run this script using sudo bash $0"
@@ -15,27 +15,11 @@ dnf update -y
 systemctl daemon-reload
 
 # Basic goodies
-dnf install -y arc-theme numix-icon-theme-circle \
-      avahi anacron ffmpegthumbnailer postfix \
-      cmake ffmpeg-devel gcc-c++ git kernel-devel libpq-devel make neovim postgresql-server \
-      autojump chromium-browser-privacy exa ffmpeg gnome-tweaks htop mailx ncdu podman \
-      podman-compose pv ripgrep transmission-gtk vlc
+dnf install -y avahi anacron postfix \
+    cmake gcc-c++ git kernel-devel make neovim \
+    autojump exa htop mailx ncdu podman pv ripgrep
 
 systemctl enable avahi-daemon
-
-# gstreamer plugin for video playback
-dnf install -y gstreamer1 gstreamer1-libav
-
-echo -e "\n=== Removing unnecessary packages ==="
-dnf remove -y gnome-boxes gnome-calendar gnome-clocks gnome-contacts gnome-maps gnome-photos gnome-weather cheese
-
-echo -e "\n=== Miscellaneous configuration ==="
-
-# Change default thumbnailer
-cd /usr/share/thumbnailers
-mv -n totem.thumbnailer totem.thumbnailer.old
-ln -sf ffmpegthumbnailer.thumbnailer totem.thumbnailer
-cd ~
 
 # Randomize MAC address every time you connect to WiFi
 echo "[device]
@@ -45,18 +29,6 @@ wifi.scan-rand-mac-address=yes
 wifi.cloned-mac-address=random
 ethernet.cloned-mac-address=random
 connection.stable-id=\${CONNECTION}/\${BOOT}" > /etc/NetworkManager/conf.d/00-macrandomize.conf
-
-# Bookmarks
-echo "file://$HOME/Documents
-file://$HOME/Music
-file://$HOME/Pictures
-file://$HOME/Videos
-file://$HOME/Downloads
-file://$HOME/Development Development
-file://$HOME/MEGA/Books Books" > ~/.config/gtk-3.0/bookmarks
-
-# Reload fonts
-fc-cache -r
 
 # Mail redirection
 echo "root:		$SUDO_USER" >> /etc/aliases
@@ -76,7 +48,7 @@ git config --global pull.rebase "false"
 
 echo -e "\n=== Downloading dotfiles ==="
 rm -rf ~/.dotfiles_old
-git clone --single-branch --branch master --recursive https://github.com/lucis-fluxum/dotfiles ~/.dotfiles
+git clone --single-branch --branch raspberry-pi --recursive https://github.com/lucis-fluxum/dotfiles ~/.dotfiles
 ~/.dotfiles/setup.sh
 mkdir -p ~/.config/nvim
 ln -sf ~/.vimrc ~/.config/nvim/init.vim
@@ -141,7 +113,6 @@ echo -e "\n=== Installing rust ==="
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y --no-modify-path --default-host $(arch)-unknown-linux-gnu --default-toolchain stable
 source ~/.cargo/env
 rustup component add rust-src
-cargo install cargo-audit cargo-outdated cargo-update tokei
 
 chown -hR $SUDO_USER:$SUDO_USER ~/
 rm -rf /tmp/*
