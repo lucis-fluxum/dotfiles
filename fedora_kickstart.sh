@@ -73,8 +73,8 @@ dnf install -y bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zli
 chown -hR $SUDO_USER:$SUDO_USER ~/.rbenv/
 LATEST_RUBY_STABLE=$(rbenv install -l | grep -oP '^\s*\K\d\.\d+\.\d+(?!-dev|-pre|-rc).*' | tail -n 1)
 rm -rf /tmp/*
-# Compiling MRI requires at least 265 MB, so temporarily resize /tmp to allow more usage
-mount -o remount,size=300M,noatime /tmp
+# Temporarily resize /tmp to allow more usage for compiling
+mount -o remount,size=700M,noatime /tmp
 rbenv install $LATEST_RUBY_STABLE && rbenv global $LATEST_RUBY_STABLE
 if [ $? -eq 0 ]; then
     gem install neovim solargraph
