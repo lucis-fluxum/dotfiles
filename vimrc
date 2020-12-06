@@ -1,52 +1,54 @@
-call plug#begin('~/.vim/bundle')
+if has('nvim')
+    call plug#begin('~/.vim/bundle')
 
-Plug 'itchyny/lightline.vim'
-Plug 'sainnhe/edge'
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-commentary'
-Plug 'mhinz/vim-signify'
-" coc extensions: snippets, solargraph, rust-analyzer, json, prettier, tsserver
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
-Plug 'raimondi/delimitmate'
-Plug 'airblade/vim-rooter'
+    Plug 'itchyny/lightline.vim'
+    Plug 'sainnhe/edge'
+    Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-commentary'
+    Plug 'mhinz/vim-signify'
+    " coc extensions: snippets, solargraph, rust-analyzer, json, prettier, tsserver
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'honza/vim-snippets'
+    Plug 'tpope/vim-surround'
+    Plug 'raimondi/delimitmate'
+    Plug 'airblade/vim-rooter'
 
-call plug#end()
+    call plug#end()
 
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-	  \             [ 'cocstatus', 'readonly', 'absolutepath', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-set noshowmode
+    " lightline
+    let g:lightline = {
+          \ 'colorscheme': 'jellybeans',
+          \ 'active': {
+          \   'left': [ [ 'mode', 'paste' ],
+          \             [ 'cocstatus', 'readonly', 'absolutepath', 'modified' ] ]
+          \ },
+          \ 'component': {
+          \   'readonly': '%{&readonly?"":""}',
+          \ },
+          \ 'component_function': {
+          \   'cocstatus': 'coc#status'
+          \ },
+          \ 'separator': { 'left': '', 'right': '' },
+          \ 'subseparator': { 'left': '', 'right': '' }
+          \ }
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+    set noshowmode
 
-" edge
-set background=dark
-colorscheme edge
-highlight EndOfBuffer ctermfg=black ctermbg=none
+    " edge
+    set background=dark
+    colorscheme edge
+    highlight EndOfBuffer ctermfg=black ctermbg=none
 
-" nerdtree
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " nerdtree
+    map <C-n> :NERDTreeToggle<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" vim-signify
-nmap <leader>d :SignifyHunkDiff<CR>
+    " vim-signify
+    nmap <leader>d :SignifyHunkDiff<CR>
 
-" coc.nvim
-source ~/.dotfiles/coc.vim
+    " coc.nvim
+    source ~/.dotfiles/coc.vim
+endif
 
 " delimitmate
 let delimitMate_expand_cr = 1
@@ -56,7 +58,9 @@ let delimitMate_jump_expansion = 1
 " Other config options
 set number
 set mouse=a
-map <M-t> :below new<CR>:terminal<CR>
+set splitright
+set splitbelow
+map <M-t> :vnew<CR>:terminal<CR>
 :command Q :q
 :command Qa :qa
 :command QA :qa
