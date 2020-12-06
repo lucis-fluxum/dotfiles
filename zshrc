@@ -12,6 +12,8 @@ alias vi="vi --clean"
 alias gits="git submodule"
 alias ls="exa --git --group-directories-first -lgh"
 
+EDITOR=nvim
+
 # rbenv config
 eval "$(/usr/local/bin/rbenv init -)"
 
@@ -31,7 +33,7 @@ PATH="$HOME/.yarn/bin:$PATH"
 # Silly Mac, see https://stackoverflow.com/a/41054093
 GPG_TTY=$(tty)
 
-export PATH RUST_SRC_PATH GPG_TTY
+export EDITOR PATH RUST_SRC_PATH GPG_TTY
 
 # Load Homebrew completions
 if type brew &>/dev/null; then
