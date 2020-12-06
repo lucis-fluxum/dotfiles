@@ -48,23 +48,25 @@ if has('nvim')
 
     " coc.nvim
     source ~/.dotfiles/coc.vim
-endif
 
-" delimitmate
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-let delimitMate_jump_expansion = 1
+    " delimitmate
+    let delimitMate_expand_cr = 1
+    let delimitMate_expand_space = 1
+    let delimitMate_jump_expansion = 1
+
+    let g:python3_host_prog = '~/.pyenv/versions/3.9.0/bin/python'
+endif
 
 " Other config options
 set number
 set mouse=a
 set splitright
 set splitbelow
-map <M-t> :vnew<CR>:terminal<CR>
+map <M-t> :vnew<CR>:terminal<CR>i
+:command W :w
 :command Q :q
 :command Qa :qa
 :command QA :qa
-let g:python3_host_prog = '~/.pyenv/versions/3.9.0/bin/python'
 
 set foldmethod=syntax
 " set foldnestmax=2
