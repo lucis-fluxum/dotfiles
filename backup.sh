@@ -1,7 +1,7 @@
 #!/bin/sh
-# Use restic to backup important files to external hard drive
+# Use restic to backup important files to external location
 
-BACKUP_LOCATION="/run/media/luc/Seagate"
+BACKUP_LOCATION="/Volumes/GoogleDrive/My Drive"
 REPO_NAME="Backup"
 
 if [ ! -d "$BACKUP_LOCATION" ]; then
@@ -11,7 +11,7 @@ fi
 
 if [ ! -d "$BACKUP_LOCATION/$REPO_NAME" ]; then
     echo "Repository '$REPO_NAME' not found, creating one."
-    restic -r $BACKUP_LOCATION/$REPO_NAME init
+    restic -r "$BACKUP_LOCATION/$REPO_NAME" init
 fi
 
 if [ ! $? -eq 0 ]; then
@@ -20,5 +20,5 @@ if [ ! $? -eq 0 ]; then
 fi
 
 echo "Starting backup."
-restic -r $BACKUP_LOCATION/$REPO_NAME backup --verbose \
-    ~/Development ~/Music ~/Pictures ~/docker-compose.yml
+restic -r "$BACKUP_LOCATION/$REPO_NAME" backup --verbose \
+    ~/ --exclude "Library/Caches" --exclude "Library/Application Support/Google"
