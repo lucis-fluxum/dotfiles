@@ -4,21 +4,26 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files="zshrc irbrc nodenv pyenv rbenv venvs vimrc vim"
+files="zshrc irbrc venvs vimrc vim"
 
-echo -e "\n== Creating $olddir for backup of existing dotfiles =="
+echo "\n== Creating $olddir for backup of existing dotfiles =="
 mkdir -p $olddir
 
 cd $dir
 
 for file in $files; do
-    echo -e "\nMoving existing .$file from ~ to $olddir"
+    echo "\nMoving existing .$file from ~ to $olddir"
     mv -vn ~/.$file $olddir
-    echo -e "\nCreating symlink: .$file -> $dir/$file"
+    echo "\nCreating symlink: .$file -> $dir/$file"
     ln -s $dir/$file ~/.$file
 done
 
-echo -e "\n== Setting up pre-commit hook =="
+echo "\n== Linking nodenv, pyenv, rbenv =="
+mv -vn ~/.nodenv $dir/nodenv && ln -s $dir/nodenv ~/.nodenv
+mv -vn ~/.pyenv $dir/pyenv && ln -s $dir/pyenv ~/.pyenv
+mv -vn ~/.rbenv $dir/rbenv && ln -s $dir/rbenv ~/.rbenv
+
+echo "\n== Setting up pre-commit hook =="
 ln -s $dir/submodules.sh .git/hooks/pre-commit
 
-echo -e "\n== Done! =="
+echo "\n== Done! =="
