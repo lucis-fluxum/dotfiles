@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Use restic to backup important files to external hard drive
 
 BACKUP_LOCATION="/run/media/luc/Seagate"

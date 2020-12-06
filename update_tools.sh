@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 # Update packages, dev tools, vim plugins, etc.
 
 GIT_PULL="git pull origin master"
 
-dnf upgrade -y
+brew upgrade
 
 # Update rust, rbenv, yarn, and vim plugins
 sudo -i -u luc << END

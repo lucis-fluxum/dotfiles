@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 # Create symlinks from the home directory to any desired dotfiles in ~/.dotfiles
 # and setup a pre-commit hook for updating submodules
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files="bashrc bash_profile irbrc nodenv pyenv rbenv venvs vimrc vim"
+files="zshrc irbrc nodenv pyenv rbenv venvs vimrc vim"
 
 echo -e "\n== Creating $olddir for backup of existing dotfiles =="
 mkdir -p $olddir
