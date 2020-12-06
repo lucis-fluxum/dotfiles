@@ -8,6 +8,7 @@ fi
 # User specific aliases and functions
 alias rm="rm -v"
 alias vim=nvim
+alias vi="vi --clean"
 alias gits="git submodule"
 alias ls="exa --git --group-directories-first -lgh"
 
