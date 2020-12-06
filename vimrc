@@ -57,6 +57,9 @@ let delimitMate_jump_expansion = 1
 set number
 set mouse=a
 map <M-t> :below new<CR>:terminal<CR>
+:command Q :q
+:command Qa :qa
+:command QA :qa
 let g:python3_host_prog = '~/.pyenv/versions/3.9.0/bin/python'
 
 set foldmethod=syntax
