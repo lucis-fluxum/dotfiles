@@ -62,6 +62,15 @@ set number
 set mouse=a
 set splitright
 set splitbelow
+if !&scrolloff
+    set scrolloff=3       " Show next 3 lines while scrolling.
+endif
+if !&sidescrolloff
+    set sidescrolloff=5   " Show next 5 columns while side-scrolling.
+endif
+set nostartofline
+set ignorecase
+set smartcase
 map <M-t> :vnew<CR>:terminal<CR>i
 :command W :w
 :command Q :q

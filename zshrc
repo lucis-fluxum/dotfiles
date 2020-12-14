@@ -32,6 +32,9 @@ eval "$(/usr/local/bin/nodenv init -)"
 # yarn config
 PATH="$HOME/.yarn/bin:$PATH"
 
+# postgres
+PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+
 export EDITOR PATH RUST_SRC_PATH GPG_TTY
 
 # Load Homebrew completions
