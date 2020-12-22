@@ -12,6 +12,7 @@ if has('nvim')
     Plug 'tpope/vim-surround'
     Plug 'raimondi/delimitmate'
     Plug 'airblade/vim-rooter'
+    Plug 'pangloss/vim-javascript'
 
     call plug#end()
 
@@ -78,7 +79,6 @@ map <M-t> :vnew<CR>:terminal<CR>i
 :command QA :qa
 
 set foldmethod=syntax
-" set foldnestmax=2
 set foldlevel=1
 set expandtab shiftwidth=4 tabstop=4
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
