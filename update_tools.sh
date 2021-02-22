@@ -1,15 +1,7 @@
 #!/bin/sh
 # Update packages, dev tools, vim plugins, etc.
 
-brew upgrade
-
-# Update rust, rbenv, yarn, and vim plugins
-sudo -i -u luc << END
-
+brew upgrade --greedy
 rustup update stable
-
-yarn global upgrade
-
+npm upgrade -g
 nvim --headless +PlugUpgrade +PlugUpdate +qa!
-
-END

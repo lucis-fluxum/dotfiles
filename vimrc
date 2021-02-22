@@ -13,6 +13,7 @@ if has('nvim')
     Plug 'raimondi/delimitmate'
     Plug 'airblade/vim-rooter'
     Plug 'pangloss/vim-javascript'
+    Plug 'tpope/vim-fugitive'
 
     call plug#end()
 
@@ -63,12 +64,6 @@ set number
 set mouse=a
 set splitright
 set splitbelow
-if !&scrolloff
-    set scrolloff=3       " Show next 3 lines while scrolling.
-endif
-if !&sidescrolloff
-    set sidescrolloff=5   " Show next 5 columns while side-scrolling.
-endif
 set nostartofline
 set ignorecase
 set smartcase

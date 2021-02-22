@@ -21,4 +21,4 @@ fi
 
 echo "Starting backup."
 restic -r "$BACKUP_LOCATION/$REPO_NAME" backup --verbose \
-    ~/ --exclude "Library/Caches" --exclude "Library/Application Support/Google" --exclude ".Trash"
+    ~/ --exclude "Library/Caches" --exclude "Library/Application Support/Google" --exclude "Library/Containers/com.docker.docker" --exclude ".Trash"
