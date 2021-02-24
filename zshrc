@@ -16,6 +16,8 @@ alias ls="exa --git --group-directories-first -lgh"
 
 EDITOR=nvim
 
+PATH="/usr/local/sbin:$PATH"
+
 # rbenv config
 eval "$(/usr/local/bin/rbenv init -)"
 
@@ -28,9 +30,6 @@ eval "$(/usr/local/bin/pyenv init -)"
 
 # nodenv config
 eval "$(/usr/local/bin/nodenv init -)"
-
-# yarn config
-PATH="$HOME/.yarn/bin:$PATH"
 
 # postgres
 PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
