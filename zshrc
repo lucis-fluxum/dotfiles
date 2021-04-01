@@ -13,6 +13,11 @@ alias rm="rm -v"
 alias vim=nvim
 alias gits="git submodule"
 alias ls="exa --git --group-directories-first -lgh"
+alias backup="~/.dotfiles/backup.sh"
+alias update="~/.dotfiles/update_tools.sh"
+alias ppldb="docker exec -it adhoc_co_postgres_1 psql -U postgres adhoc_co_development"
+
+setopt histignoredups
 
 EDITOR=nvim
 
