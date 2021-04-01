@@ -1,5 +1,5 @@
 # Silly Mac, see https://stackoverflow.com/a/41054093
-GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -18,17 +18,20 @@ alias update="~/.dotfiles/update_tools.sh"
 alias ppldb="docker exec -it adhoc_co_postgres_1 psql -U postgres adhoc_co_development"
 
 setopt histignoredups
+alias history="history 1"
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
 
-EDITOR=nvim
+export EDITOR=nvim
 
-PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # rbenv config
 eval "$(/usr/local/bin/rbenv init -)"
 
 # rust config
-PATH="$HOME/.cargo/bin:$PATH"
-RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-$(arch)-unknown-linux-gnu/lib/rustlib/src/rust/library"
+export PATH="$HOME/.cargo/bin:$PATH"
+export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-$(arch)-unknown-linux-gnu/lib/rustlib/src/rust/library"
 
 # pyenv config
 eval "$(/usr/local/bin/pyenv init -)"
@@ -37,9 +40,7 @@ eval "$(/usr/local/bin/pyenv init -)"
 eval "$(/usr/local/bin/nodenv init -)"
 
 # postgres
-PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
-
-export EDITOR PATH RUST_SRC_PATH GPG_TTY
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 # Load Homebrew completions
 if type brew &>/dev/null; then
