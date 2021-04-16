@@ -47,6 +47,7 @@ if has('nvim')
 
     " vim-signify
     nmap <leader>d :SignifyHunkDiff<CR>
+    nmap <leader>b :Git blame<CR>
 
     " coc.nvim
     source ~/.dotfiles/coc.vim
