@@ -3,5 +3,5 @@
 
 brew upgrade --greedy
 rustup update stable
-npm upgrade -g
+# npm upgrade -g
 nvim --headless +PlugUpgrade +PlugUpdate +qa!
